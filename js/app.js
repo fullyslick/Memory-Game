@@ -1,14 +1,7 @@
-/*
- * Create a list that holds all of your cards
- */
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+// Holds all of the card elements
+const allCards = document.querySelectorAll(".card");
+// Holds the output of the shuffle function
+let shuffleOutput;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -23,9 +16,30 @@ function shuffle(array) {
     array[randomIndex] = temporaryValue;
   }
 
-  return array;
+  return shuffleOutput = array;
 }
 
+/**
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+
+/*
+ * @description - randomises the positions of allCards NodeList,
+ * and replaces the "deck" of cards with new one.
+ * @param {allCard} - the NodeList from the DOM containing all cards
+ */
+ function newGame(){
+   shuffle(allCards);
+
+   console.log(shuffleOutput);
+ }
+
+window.onload = function(){
+  newGame();
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -39,8 +53,6 @@ function shuffle(array) {
  */
 
 // The code below will display all cards. Use to check if shuffeling the cards is working
-let allCards = document.querySelectorAll(".card");
-
 function displayAllCards() {
   for (let i = 0; i < allCards.length; i++) {
     let currentObject = allCards[i];
