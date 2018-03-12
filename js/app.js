@@ -9,7 +9,7 @@ const deck = document.querySelector(".deck");
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-  var currentIndex = array.length,
+  let currentIndex = array.length,
     temporaryValue, randomIndex;
 
   while (currentIndex !== 0) {
@@ -31,11 +31,14 @@ function shuffle(array) {
  */
 
 /*
- * @description - randomises the positions of allCards NodeList,
+ * @description - randomises the positions of allCards array of objects,
  * and replaces the "deck" of cards with new one.
- * @param {allCard} - the NodeList from the DOM containing all cards
  */
  function newGame(){
+   // Make all cards closed and unmatched
+   for (let i = 0; i < allCards.length; i++) {
+     allCards[i].classList.remove("match", "show", "open") ;
+   }
    // Call the helper function that shuffles the cards
    shuffle(allCards);
 
@@ -49,10 +52,11 @@ function shuffle(array) {
    }
 
    // Loop through each card and create its HTML
-   for (var i = 0; i < shuffleOutput.length; i++) {
+   for (let i = 0; i < shuffleOutput.length; i++) {
      newCardFragment.appendChild(shuffleOutput[i]);
    }
 
+   // Add each card's HTML to the page
    deck.appendChild(newCardFragment);
  }
 
