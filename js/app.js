@@ -1,21 +1,23 @@
-// Holds all of the card elements, converted in array of objects
+// Stores all of the card elements, converted in array of objects
 const allCards = [...document.querySelectorAll(".card")];
-// Holds the output of the shuffle function
+// Stores the output of the shuffle function
 let shuffleOutput;
-// Holds the deck of cards
+// Stores the deck of cards
 const deck = document.querySelector(".deck");
-// Holds the restart button
+// Stores the restart button
 const restartBtn = document.querySelector(".restart");
-// Holds the popup dialog
+// Stores the popup dialog
 const popUpDialog = document.querySelector("#pop-up-dialog");
-// Holds the pop up message
+// Stores the pop up message
 const popUpMessage = document.querySelector("#pop-up-message");
-// Holds the confirm restart button
+// Stores the confirm restart button
 const playAgainBtn = document.querySelector("#play-again");
-// Holds close popUpDialog button
+// Stores close popUpDialog button
 const closeDialogBtn = document.querySelector(".close");
 // Determine if the game is over or not
 let isGameOver = false;
+// Stores the open cards
+let openCards = [];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -143,8 +145,40 @@ closeDialogBtn.addEventListener("click", function() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+function matchedCards(){
+  for (var i = 0; i < openCards.length; i++) {
+    openCards[i].parentElement.classList.add("match");
+  }
+}
+
+/*
+ * @description Comapres the clicked cards
+ */
+function compareOpenCards() {
+  console.log("compare");
+  if (openCards[0].toString() == openCards[1].toString()) {
+    matchedCards();
+  } else {
+    // console.log('Do not match');
+    // for (var i = 0; i < openCards.length; i++) {
+    //   openCards[i].classList.remove("open", "show");
+    //   openCards.pop();
+    // }
+  }
+}
+
+// Store open cards in a *list* of "open" cards
+function storeOpenCards(clickedCard) {
+  openCards.push(clickedCard.querySelector('i'));
+  // if the list already has another card, check to see if the two cards match
+  if (openCards.length == 2) {
+    compareOpenCards();
+  }
+}
+
+// Display the card's symbol
 function displayCardSymbol(clickedCard) {
-  clickedCard.classList.add("open","show");
+  clickedCard.classList.add("open", "show");
 }
 
 /*
@@ -154,6 +188,7 @@ deck.addEventListener("click", function(e) {
   // Delagate the event listener on the child LI
   if (e.target.nodeName === 'LI') {
     displayCardSymbol(e.target);
+    storeOpenCards(e.target);
   }
 });
 
@@ -161,6 +196,6 @@ deck.addEventListener("click", function(e) {
 function displayAllCards() {
   for (let i = 0; i < allCards.length; i++) {
     let currentObject = allCards[i];
-    currentObject.classList.add("match");
+    currentObject.classList.add("open", "show");
   }
 }
