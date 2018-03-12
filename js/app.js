@@ -97,6 +97,8 @@ restartBtn.addEventListener("click" , function(){
 
   // Add restart message
   popUpMessage.textContent = "Do you really want to restart the game?"
+  // Change the button message
+  playAgainBtn.textContent = "Restart"
 
   // Reset game on "play-again" button click and close dialog
   playAgainBtn.addEventListener("click", function(){
