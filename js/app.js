@@ -183,10 +183,15 @@ function compareOpenCards() {
   }
 }
 
-// Store open cards in a *list* of "open" cards
+/*
+ * @description If the clicked card does not have 'match' class,
+ * store the card in the open cards.
+ * This prevent user from accedently clicking on already open card
+ */
 function storeOpenCards(clickedCard) {
   openCards.push(clickedCard.querySelector('i'));
-  // if the list already has another card, check to see if the two cards match
+
+  // If there are two cards in the list compare them
   if (openCards.length == 2) {
     compareOpenCards();
   }
@@ -203,8 +208,12 @@ function displayCardSymbol(clickedCard) {
 deck.addEventListener("click", function(e) {
   // Delagate the event listener on the child LI
   if (e.target.nodeName === 'LI') {
-    displayCardSymbol(e.target);
-    storeOpenCards(e.target);
+
+    // This if prevents user from accidently clicking on the same card and marking it as "match"
+    if (!e.target.classList.contains("open")) {
+      displayCardSymbol(e.target);
+      storeOpenCards(e.target);
+    }
   }
 });
 
