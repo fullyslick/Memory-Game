@@ -6,6 +6,14 @@ let shuffleOutput;
 const deck = document.querySelector(".deck");
 // Holds the restart button
 const restartBtn = document.querySelector(".restart");
+// Holds the popup dialog
+const popUpDialog = document.querySelector("#pop-up-dialog");
+// Holds the pop up message
+const popUpMessage = document.querySelector("#pop-up-message");
+// Holds the confirm restart button
+const playAgainBtn = document.querySelector("#play-again");
+// Holds close popUpDialog button
+const closeDialog = document.querySelector(".close");
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -55,6 +63,7 @@ function shuffle(array) {
    deck.appendChild(newCardFragment);
  }
 
+// When the page is loaded change the position of teh cards
 window.onload = function(){
   newGame();
 }
@@ -71,12 +80,38 @@ window.onload = function(){
  */
 
 /*
-* Event listener to reset the game on "restart" button click
-* @description Pop up dialog appears to confirm the restart,
-* on click of confirm button the game is restated
-*/
+ * @description Hides pop up dialog
+ */
+function hidePopUpDialog(){
+  popUpDialog.style.display = "none";
+}
+/*
+ * Event listener to reset the game on "restart" button click
+ * @description Pop up dialog appears to confirm the restart,
+ * on click of confirm button the game is restated
+ * TO:DO Should Pause The Game Timer
+ */
 restartBtn.addEventListener("click" , function(){
-  displayAllCards();
+  // Display popUpDialog
+  popUpDialog.style.display = "block";
+
+  // Add restart message
+  popUpMessage.textContent = "Do you really want to restart the game?"
+
+  // Reset game on "play-again" button click and close dialog
+  playAgainBtn.addEventListener("click", function(){
+
+    newGame();
+
+    hidePopUpDialog();
+  });
+});
+
+/*
+ * Close pop up dialog
+ */
+closeDialog.addEventListener("click", function(){
+  hidePopUpDialog();
 });
 
 // The code below will display all cards. Use to check if shuffeling the cards is working
