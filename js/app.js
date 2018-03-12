@@ -13,7 +13,9 @@ const popUpMessage = document.querySelector("#pop-up-message");
 // Holds the confirm restart button
 const playAgainBtn = document.querySelector("#play-again");
 // Holds close popUpDialog button
-const closeDialog = document.querySelector(".close");
+const closeDialogBtn = document.querySelector(".close");
+// Determine if the game is over or not
+let isGameOver = false;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -50,7 +52,6 @@ function shuffle(array) {
 
    // Remove the currently displayed cards
    for (var i = 0; i < allCards.length; i++) {
-     console.log("All cards are " + allCards[i]);
      deck.removeChild(allCards[i]);
    }
 
@@ -77,7 +78,40 @@ window.onload = function(){
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */console.log("All cards are " + allCards[i]);
+
+/*
+ * @description Displays pop up dialog
  */
+function showPopUpDialog(){
+  // Display popUpDialog
+  popUpDialog.style.display = "block";
+
+  // If game is over display congratulations message and mettrics
+  if (isGameOver) {
+    // TO:DO Display metrics
+
+    // Display congratulations message
+    popUpMessage.textContent = "Congratulations! You won the game!"
+    // Change the button message
+    playAgainBtn.textContent = "Play Again"
+    // Hide close dialog button
+    closeDialogBtn.style.display = "none";
+  } else {
+    // If game is not over, then this is an attempt to restart the game
+    // Display restart message
+    popUpMessage.textContent = "Do you really want to restart the game?"
+    // Change the button message
+    playAgainBtn.textContent = "Restart"
+  }
+
+  // Reset game on "play-again"/"restart" button click and close dialog
+  playAgainBtn.addEventListener("click", function(){
+    newGame();
+
+    hidePopUpDialog();
+  });
+}
 
 /*
  * @description Hides pop up dialog
@@ -85,34 +119,22 @@ window.onload = function(){
 function hidePopUpDialog(){
   popUpDialog.style.display = "none";
 }
+
 /*
  * Event listener to reset the game on "restart" button click
- * @description Pop up dialog appears to confirm the restart,
- * on click of confirm button the game is restated
- * TO:DO Should Pause The Game Timer
+ * @description Calls pop up dialog appears to confirm the restart,
  */
 restartBtn.addEventListener("click" , function(){
-  // Display popUpDialog
-  popUpDialog.style.display = "block";
+  // TO:DO Should Pause The Game Timer
 
-  // Add restart message
-  popUpMessage.textContent = "Do you really want to restart the game?"
-  // Change the button message
-  playAgainBtn.textContent = "Restart"
-
-  // Reset game on "play-again" button click and close dialog
-  playAgainBtn.addEventListener("click", function(){
-
-    newGame();
-
-    hidePopUpDialog();
-  });
+  showPopUpDialog();
 });
 
 /*
  * Close pop up dialog
  */
-closeDialog.addEventListener("click", function(){
+closeDialogBtn.addEventListener("click", function(){
+  // TO:DO Unpause timer
   hidePopUpDialog();
 });
 
