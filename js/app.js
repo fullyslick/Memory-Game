@@ -1,11 +1,11 @@
-/**
-* Holds all of the card elements, converted in array of objects
-*/
+// Holds all of the card elements, converted in array of objects
 const allCards = [...document.querySelectorAll(".card")];
 // Holds the output of the shuffle function
 let shuffleOutput;
 // Holds the deck of cards
 const deck = document.querySelector(".deck");
+// Holds the restart button
+const restartBtn = document.querySelector(".restart");
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -23,16 +23,11 @@ function shuffle(array) {
   return shuffleOutput = array;
 }
 
-/**
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
 /*
- * @description - randomises the positions of allCards array of objects,
+ * @description - restarts the game,
+ * randomises the positions of allCards array of objects,
  * and replaces the "deck" of cards with new one.
+ * TO:DO - reset timer and reset stars
  */
  function newGame(){
    // Make all cards closed and unmatched
@@ -74,6 +69,15 @@ window.onload = function(){
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+/*
+* Event listener to reset the game on "restart" button click
+* @description Pop up dialog appears to confirm the restart,
+* on click of confirm button the game is restated
+*/
+restartBtn.addEventListener("click" , function(){
+  displayAllCards();
+});
 
 // The code below will display all cards. Use to check if shuffeling the cards is working
 function displayAllCards() {
