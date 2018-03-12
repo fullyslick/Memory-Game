@@ -143,6 +143,20 @@ closeDialogBtn.addEventListener("click", function() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+function displayCardSymbol(clickedCard) {
+  clickedCard.classList.add("open","show");
+}
+
+/*
+ * Set up the event listener for a card.
+ */
+deck.addEventListener("click", function(e) {
+  // Delagate the event listener on the child LI
+  if (e.target.nodeName === 'LI') {
+    displayCardSymbol(e.target);
+  }
+});
+
 // The code below will display all cards. Use to check if shuffeling the cards is working
 function displayAllCards() {
   for (let i = 0; i < allCards.length; i++) {
