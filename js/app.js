@@ -145,25 +145,41 @@ closeDialogBtn.addEventListener("click", function() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-function matchedCards(){
+// Clear the openCards array
+function clearOpenCardsList() {
+  openCards = [];
+}
+
+// Lock the cards in the open position
+function matchedCards() {
   for (var i = 0; i < openCards.length; i++) {
     openCards[i].parentElement.classList.add("match");
   }
+
+  clearOpenCardsList();
 }
 
+function notMatchedCards() {
+  setTimeout(function() {
+    for (var i = 0; i < openCards.length; i++) {
+      openCards[i].parentElement.classList.remove("open", "show");
+    }
+
+    clearOpenCardsList();
+  }, 500);
+
+}
 /*
  * @description Comapres the clicked cards
  */
 function compareOpenCards() {
   console.log("compare");
-  if (openCards[0].toString() == openCards[1].toString()) {
+  if (openCards[0].classList.value == openCards[1].classList.value) {
+    // Cards matched
     matchedCards();
   } else {
-    // console.log('Do not match');
-    // for (var i = 0; i < openCards.length; i++) {
-    //   openCards[i].classList.remove("open", "show");
-    //   openCards.pop();
-    // }
+    // Cards does not matched
+    notMatchedCards();
   }
 }
 
