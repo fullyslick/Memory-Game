@@ -1,7 +1,11 @@
-// Holds all of the card elements
-const allCards = document.querySelectorAll(".card");
+/**
+* Holds all of the card elements, converted in array of objects
+*/
+const allCards = [...document.querySelectorAll(".card")];
 // Holds the output of the shuffle function
 let shuffleOutput;
+// Holds the deck of cards
+const deck = document.querySelector(".deck");
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -32,9 +36,24 @@ function shuffle(array) {
  * @param {allCard} - the NodeList from the DOM containing all cards
  */
  function newGame(){
+   // Call the helper function that shuffles the cards
    shuffle(allCards);
 
-   console.log(shuffleOutput);
+   // Fragment to hold the new "deck" of cards
+   let newCardFragment = document.createDocumentFragment();
+
+   // Remove the currently displayed cards
+   for (var i = 0; i < allCards.length; i++) {
+     console.log("All cards are " + allCards[i]);
+     deck.removeChild(allCards[i]);
+   }
+
+   // Loop through each card and create its HTML
+   for (var i = 0; i < shuffleOutput.length; i++) {
+     newCardFragment.appendChild(shuffleOutput[i]);
+   }
+
+   deck.appendChild(newCardFragment);
  }
 
 window.onload = function(){
