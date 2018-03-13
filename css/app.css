@@ -175,11 +175,12 @@ h1 {
   display: inline-block;
   opacity: 1;
   transform: scale(1);
+  color: #ffb11a;
 }
 
 .stars li.gone {
   opacity: 0;
-  transform: scale(3);
+  transform: scale(4);
   transition: all 0.5s;
 }
 
