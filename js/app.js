@@ -1,27 +1,39 @@
 // Stores all of the card elements, converted in array of objects
 const allCards = [...document.querySelectorAll(".card")];
+
 // Stores the output of the shuffle function
 let shuffleOutput;
+
 // Stores the deck of cards
 const deck = document.querySelector(".deck");
+
 // Stores the restart button
 const restartBtn = document.querySelector(".restart");
+
 // Stores the popup dialog
 const popUpDialog = document.querySelector("#pop-up-dialog");
+
 // Stores the pop up message
 const popUpMessage = document.querySelector("#pop-up-message");
+
 // Stores the confirm restart button
 const playAgainBtn = document.querySelector("#play-again");
+
 // Stores close popUpDialog button
 const closeDialogBtn = document.querySelector(".close");
+
 // Determine if the game is over or not
 let isGameOver = false;
+
 // Stores the open cards
 let openCards = [];
+
 // Stores the span that displays the moves
 const movesDisplay = document.querySelector(".moves");
+
 // Stores the number of moves
 let movesCounter;
+
 // Stores the number of matched cards pairs
 let matchedCardsPairs;
 
