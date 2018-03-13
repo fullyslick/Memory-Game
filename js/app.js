@@ -92,6 +92,8 @@ function newGame() {
   // Reset timer
   timerMinutes = 0;
   timerSeconds = 0;
+  minutesDisplay.textContent = "0";
+  secondsDisplay.textContent = "00";
 
   // Reset number of moves
   movesCounter = 0;
@@ -144,9 +146,7 @@ function startTimer() {
   timer = setInterval(function() {
     timerSeconds += 1;
 
-    /*
-     * Display the time on the timer in proper format 0:00
-     */
+    // Display the time on the timer in proper format 0:00
     if (timerSeconds < 10) {
       secondsDisplay.textContent = "0" + timerSeconds;
     }
@@ -174,7 +174,7 @@ function stopTimer() {
  *@description Pauses the timer
  */
 function pauseTimer() {
-  
+
   stopTimer();
 
   // Get the current minutes and seconds of timer and store them in paused minutes and seconds
@@ -204,11 +204,14 @@ function showPopUpDialog() {
   // If game is over display congratulations message and mettrics
   if (isGameOver) {
     // TO:DO Display metrics time
+    // Stop the timer
+    stopTimer();
+
     // Stores the metrics message
     let metricsSpan = document.createElement("span");
 
     // Insert the metrics message with ES6
-    metricsSpan.textContent = `With ${movesCounter} moves and ${numberOfStars} stars!`
+    metricsSpan.textContent = `With ${movesCounter} moves and ${numberOfStars} stars for ${timerMinutes}:${timerSeconds} time!`
 
     // Display congratulations message
     popUpMessage.textContent = `Congratulations! You won the game!\n`;
@@ -222,6 +225,9 @@ function showPopUpDialog() {
     closeDialogBtn.style.display = "none";
   } else {
     // If game is not over, then this is an attempt to restart the game
+    // Pause the timer
+    pauseTimer();
+
     // Display restart message
     popUpMessage.textContent = `Do you really want to restart the game?`;
     // Change the button message
@@ -256,11 +262,12 @@ restartBtn.addEventListener("click", function() {
 });
 
 /*
- * Close pop up dialog on close button click
+ * Close pop up dialog on close button click and resume timer
  */
 closeDialogBtn.addEventListener("click", function() {
-  // TO:DO Unpause timer
   hidePopUpDialog();
+
+  resumeTimer();
 });
 
 /*
