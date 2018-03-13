@@ -37,6 +37,12 @@ let movesCounter;
 // Stores the number of matched cards pairs
 let matchedCardsPairs;
 
+// Stores stars rating
+const stars = document.querySelector(".stars").querySelectorAll("li");
+
+// Stores the number of stars rating
+let numberOfStars = 3;
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   let currentIndex = array.length,
@@ -57,7 +63,7 @@ function shuffle(array) {
  * @description - restarts the game,
  * randomises the positions of allCards array of objects,
  * and replaces the "deck" of cards with new one.
- * TO:DO - reset timer and reset stars
+ * TO:DO - reset timer
  */
 function newGame() {
   // Game is restared so it is not over
@@ -69,6 +75,14 @@ function newGame() {
 
   // Reset the number of matched cards pairs
   matchedCardsPairs = 0;
+
+  // Bring stars back to screen by removing gone class
+  for (var i = 0; i < stars.length; i++) {
+    stars[i].classList.remove("gone");
+  }
+
+  // Reset the number of stars to default of 3
+  numberOfStars = 3;
 
   // Make all cards closed and unmatched
   for (let i = 0; i < allCards.length; i++) {
@@ -179,6 +193,29 @@ function checkGameOver() {
 }
 
 /*
+ * @description Changes star rating depenging on number of moves
+ */
+function changeStarRating(){
+
+  switch (movesCounter) {
+    case 18:
+      stars[2].classList.add("gone");
+      numberOfStars = 2;
+
+      break;
+    case 26:
+      stars[1].classList.add("gone");
+      numberOfStars = 1;
+
+    break;
+    case 32:
+      stars[0].classList.add("gone");
+      numberOfStars = 0;
+    break;
+  }
+}
+
+/*
  * @description Increments the move counter and display it on the page,
  */
 function incrementMoves() {
@@ -276,6 +313,9 @@ deck.addEventListener("click", function(e) {
 
       // Increment the move counter
       incrementMoves();
+
+      // Change stars rating
+      changeStarRating();
 
       // Check if game is over
       checkGameOver();
