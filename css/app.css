@@ -150,6 +150,7 @@ h1 {
  p.timer {
     font: bold 42px/0 Digital, sans-serif;
     color: #bf0000;
+    letter-spacing: 10px;
     text-align: center;
     text-shadow: 0 0 1px #bf0000, 0 0 3px #bf0000
 }
