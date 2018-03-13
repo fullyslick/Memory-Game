@@ -18,6 +18,10 @@ const closeDialogBtn = document.querySelector(".close");
 let isGameOver = false;
 // Stores the open cards
 let openCards = [];
+// Stores the span that displays the moves
+const movesDisplay = document.querySelector(".moves");
+// Stores the number of moves
+let movesCounter;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -44,6 +48,10 @@ function shuffle(array) {
 function newGame() {
   // Game is restared so it is not over
   isGameOver = false;
+
+  // Reset number of moves
+  movesCounter = 0;
+  movesDisplay.textContent = movesCounter;
 
   // Make all cards closed and unmatched
   for (let i = 0; i < allCards.length; i++) {
