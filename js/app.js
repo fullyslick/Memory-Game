@@ -22,6 +22,8 @@ let openCards = [];
 const movesDisplay = document.querySelector(".moves");
 // Stores the number of moves
 let movesCounter;
+// Stores the number of matched cards pairs
+let matchedCardsPairs;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -52,6 +54,9 @@ function newGame() {
   // Reset number of moves
   movesCounter = 0;
   movesDisplay.textContent = movesCounter;
+
+  // Reset the number of matched cards pairs
+  matchedCardsPairs = 0;
 
   // Make all cards closed and unmatched
   for (let i = 0; i < allCards.length; i++) {
@@ -143,20 +148,28 @@ closeDialogBtn.addEventListener("click", function() {
 });
 
 /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ * @description Detect if all cards have matched
+ * if the pair maxium of 8 pairs is reached,
+ * then the game is over so show popUpDialog,
+ * but with a slight delay to show css flip card animation
  */
+function checkGameOver() {
+  if (matchedCardsPairs == 8) {
+
+    // game is over so set isGameOver to true
+    isGameOver = true;
+
+    // show congratulations dialog with a slight delay
+    setTimeout(function() {
+      showPopUpDialog();
+    }, 500);
+  }
+}
 
 /*
  * @description Increments the move counter and display it on the page,
  */
-function incrementMoves(){
+function incrementMoves() {
   movesCounter += 1;
   movesDisplay.textContent = movesCounter;
 }
@@ -175,6 +188,9 @@ function matchedCards() {
   for (var i = 0; i < openCards.length; i++) {
     openCards[i].parentElement.classList.add("match");
   }
+
+  // increment the matchedCardsPairs by 1
+  matchedCardsPairs += 1;
 
   // match is detected so clear the openCards array
   clearOpenCardsList();
@@ -240,6 +256,7 @@ deck.addEventListener("click", function(e) {
       displayCardSymbol(e.target);
       storeOpenCards(e.target);
       incrementMoves();
+      checkGameOver();
     }
   }
 });
