@@ -260,11 +260,3 @@ deck.addEventListener("click", function(e) {
     }
   }
 });
-
-// The code below will display all cards. Use to check if shuffeling the cards is working
-function displayAllCards() {
-  for (let i = 0; i < allCards.length; i++) {
-    let currentObject = allCards[i];
-    currentObject.classList.add("open", "show");
-  }
-}
