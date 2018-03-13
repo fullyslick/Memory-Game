@@ -203,7 +203,6 @@ function showPopUpDialog() {
 
   // If game is over display congratulations message and mettrics
   if (isGameOver) {
-    // TO:DO Display metrics time
     // Stop the timer
     stopTimer();
 
@@ -254,7 +253,6 @@ function hidePopUpDialog() {
  * @description A pop up dialog appears to confirm the restart.
  */
 restartBtn.addEventListener("click", function() {
-  // TO:DO Should Pause The Game Timer
   // Display close button if it is cleared by previous restart of the game
   closeDialogBtn.style.display = "block";
 
