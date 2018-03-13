@@ -91,7 +91,7 @@ function showPopUpDialog() {
 
   // If game is over display congratulations message and mettrics
   if (isGameOver) {
-    // TO:DO Display metrics time and stars
+    // TO:DO Display metrics time and stars and moves
 
     // Display congratulations message
     popUpMessage.textContent = "Congratulations! You won the game!"
@@ -124,7 +124,7 @@ function hidePopUpDialog() {
 
 /*
  * Event listener to reset the game on "restart" button click
- * @description Calls pop up dialog appears to confirm the restart,
+ * @description A pop up dialog appears to confirm the restart.
  */
 restartBtn.addEventListener("click", function() {
   // TO:DO Should Pause The Game Timer
@@ -135,7 +135,7 @@ restartBtn.addEventListener("click", function() {
 });
 
 /*
- * Close pop up dialog
+ * Close pop up dialog on close button click
  */
 closeDialogBtn.addEventListener("click", function() {
   // TO:DO Unpause timer
@@ -158,30 +158,41 @@ function clearOpenCardsList() {
   openCards = [];
 }
 
-// Lock the cards in the open position
+/*
+ * @description Matching cards get "match" class,
+ * and match counter is incremented by 1
+ */
 function matchedCards() {
   for (var i = 0; i < openCards.length; i++) {
     openCards[i].parentElement.classList.add("match");
   }
 
+  // match is detected so clear the openCards array
   clearOpenCardsList();
 }
 
+/*
+ * @description Not matching cards are closed after some delay,
+ * by removing "open" and "show" classes
+ */
 function notMatchedCards() {
   setTimeout(function() {
     for (var i = 0; i < openCards.length; i++) {
       openCards[i].parentElement.classList.remove("open", "show");
     }
 
+    // match is not detected so clear the openCards array
     clearOpenCardsList();
   }, 500);
 
 }
 /*
- * @description Comapres the clicked cards
+ * @description Compares the clicked cards,
+ * by compareing all their classes.
+ * The same effect could be achieved by compareing outerHTML
  */
 function compareOpenCards() {
-  console.log("compare");
+
   if (openCards[0].classList.value == openCards[1].classList.value) {
     // Cards matched
     matchedCards();
@@ -192,14 +203,12 @@ function compareOpenCards() {
 }
 
 /*
- * @description If the clicked card does not have 'match' class,
- * store the card in the open cards.
- * This prevent user from accedently clicking on already open card
+ * @description Store the open card in an array of objects,
+ * and if there are two objects (cards) in the array compare them
  */
 function storeOpenCards(clickedCard) {
   openCards.push(clickedCard.querySelector('i'));
 
-  // If there are two cards in the list compare them
   if (openCards.length == 2) {
     compareOpenCards();
   }
@@ -217,7 +226,7 @@ deck.addEventListener("click", function(e) {
   // Delagate the event listener on the child LI
   if (e.target.nodeName === 'LI') {
 
-    // This if prevents user from accidently clicking on the same card and marking it as "match"
+    // This "if" prevents user from accidently clicking on the same card and marking it as "match"
     if (!e.target.classList.contains("open")) {
       displayCardSymbol(e.target);
       storeOpenCards(e.target);
