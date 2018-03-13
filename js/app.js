@@ -122,10 +122,19 @@ function showPopUpDialog() {
 
   // If game is over display congratulations message and mettrics
   if (isGameOver) {
-    // TO:DO Display metrics time and stars and moves
+    // TO:DO Display metrics time
+    // Stores the metrics message
+    let metricsSpan = document.createElement("span");
+
+    // Insert the metrics message with ES6
+    metricsSpan.textContent = `With ${movesCounter} moves and ${numberOfStars} stars!`
 
     // Display congratulations message
-    popUpMessage.textContent = "Congratulations! You won the game!"
+    popUpMessage.textContent = `Congratulations! You won the game!\n`;
+
+    // Add metrics message after the congratulations message
+    popUpMessage.appendChild(metricsSpan);
+
     // Change the button message
     playAgainBtn.textContent = "Play Again!"
     // Hide close dialog button
