@@ -136,15 +136,15 @@ function showPopUpDialog() {
     popUpMessage.appendChild(metricsSpan);
 
     // Change the button message
-    playAgainBtn.textContent = "Play Again!"
+    playAgainBtn.textContent = `Play Again!`;
     // Hide close dialog button
     closeDialogBtn.style.display = "none";
   } else {
     // If game is not over, then this is an attempt to restart the game
     // Display restart message
-    popUpMessage.textContent = "Do you really want to restart the game?"
+    popUpMessage.textContent = `Do you really want to restart the game?`;
     // Change the button message
-    playAgainBtn.textContent = "Restart"
+    playAgainBtn.textContent = `Restart`;
   }
 
   // Reset game on "play-again"/"restart" button click and close dialog
