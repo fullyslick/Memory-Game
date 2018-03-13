@@ -49,6 +49,9 @@ const secondsDisplay = document.querySelector("#seconds");
 // Stores the minutes inside timer
 const minutesDisplay = document.querySelector("#minutes");
 
+// Store the timer JS interval function
+let timer;
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   let currentIndex = array.length,
@@ -119,6 +122,41 @@ window.onload = function() {
   newGame();
 }
 
+/*
+ * @description Start timer
+ */
+function startTimer() {
+  let seconds = 0;
+  let minutes = 0;
+
+  timer = setInterval(function() {
+    seconds += 1;
+
+    /*
+     * Display the time on the timer in proper format 0:00
+     */
+    if (seconds < 10) {
+      secondsDisplay.textContent = "0" + seconds;
+    }
+    if (seconds >= 10) {
+      secondsDisplay.textContent = seconds;
+    }
+    if (seconds == 60) {
+      minutes += 1;
+      seconds = 0;
+      minutesDisplay.textContent = minutes;
+      secondsDisplay.textContent = "00";
+    }
+
+  }, 1000);
+}
+
+/*
+ * @description Stops the timer
+ */
+function stopTimer() {
+  window.clearInterval(timer);
+}
 /*
  * @description Displays pop up dialog
  */
@@ -236,31 +274,6 @@ function changeStarRating() {
 function incrementMoves() {
   movesCounter += 1;
   movesDisplay.textContent = movesCounter;
-}
-
-/*
- * @description Start timer
- */
-function startTimer() {
-  let seconds = 0;
-  let minutes = 0;
-
-  let timer = setInterval(function() {
-    seconds += 1;
-
-    // Output the result in an element with id="demo"
-    if (seconds < 10) {
-      secondsDisplay.textContent = "0" + seconds;
-    } if (seconds >= 10) {
-      secondsDisplay.textContent = seconds;
-    } if (seconds == 60 ) {
-      minutes += 1;
-      seconds = 0;
-      minutesDisplay.textContent = minutes;
-      secondsDisplay.textContent = "00";
-    }
-
-  }, 1000);
 }
 
 // Clear the openCards array
