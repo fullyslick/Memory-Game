@@ -189,10 +189,10 @@ function matchedCards() {
     openCards[i].parentElement.classList.add("match");
   }
 
-  // increment the matchedCardsPairs by 1
+  // Increment the matchedCardsPairs by 1
   matchedCardsPairs += 1;
 
-  // match is detected so clear the openCards array
+  // Match is detected so clear the openCards array
   clearOpenCardsList();
 }
 
@@ -206,7 +206,7 @@ function notMatchedCards() {
       openCards[i].parentElement.classList.remove("open", "show");
     }
 
-    // match is not detected so clear the openCards array
+    // Match is not detected so clear the openCards array
     clearOpenCardsList();
   }, 500);
 
@@ -228,18 +228,15 @@ function compareOpenCards() {
 }
 
 /*
- * @description Store the open card in an array of objects,
- * and if there are two objects (cards) in the array compare them
+ * @description Store the open card in an array of objects
  */
 function storeOpenCards(clickedCard) {
   openCards.push(clickedCard.querySelector('i'));
-
-  if (openCards.length == 2) {
-    compareOpenCards();
-  }
 }
 
-// Display the card's symbol
+/*
+ * @description Display the card's symbol
+ */
 function displayCardSymbol(clickedCard) {
   clickedCard.classList.add("open", "show");
 }
@@ -253,9 +250,22 @@ deck.addEventListener("click", function(e) {
 
     // This "if" prevents user from accidently clicking on the same card and marking it as "match"
     if (!e.target.classList.contains("open")) {
+
+      // Display the card to the user
       displayCardSymbol(e.target);
+
+      // Store the clicked card in an openCards array
       storeOpenCards(e.target);
+
+      // If there are two objects (cards) in the openCards array compare them
+      if (openCards.length == 2) {
+        compareOpenCards();
+      }
+
+      // Increment the move counter
       incrementMoves();
+
+      // Check if game is over
       checkGameOver();
     }
   }
