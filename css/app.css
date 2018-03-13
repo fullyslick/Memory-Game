@@ -1,47 +1,45 @@
 html {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-    -webkit-box-sizing: inherit;
-            box-sizing: inherit;
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+  background: #ffffff url('../img/geometry2.png');
+  /* Background pattern from Subtle Patterns */
+  font-family: 'Coda', cursive;
 }
 
 .container {
-    display: -webkit-box;true
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+  display: -webkit-box;
+  true display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 /*
@@ -49,23 +47,23 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
-    background: -webkit-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
-    background: -o-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
-    border-radius: 10px;
-    -webkit-box-pen showshadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+  width: 660px;
+  min-height: 680px;
+  background: -webkit-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
+  background: -o-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  -webkit-box-pen showshadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
@@ -73,64 +71,70 @@ h1 {
   transition: -webkit-transform 0.5s;
   -o-transition: transform 0.5s;
   transition: transform 0.5s;
-  transition: transform 0.5s,
-  -webkit-transform 0.5s;
-  transition: transform 0.5s,
-  -webkit-transform 0.5s;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin: 0 0 3em;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
-    background: #2e3d49;
-    font-size: 0;
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
+  height: 125px;
+  width: 125px;
+  background: #2e3d49;
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .deck .card.open {
-    background: #02b3e4;
-    cursor: default;
+  background: #02b3e4;
+  cursor: default;
 }
 
 .deck .card.show {
-    font-size: 33px;
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
+  font-size: 33px;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
 }
 
 /* Animation of matched cards */
+
 @keyframes pumper {
-  0%{transform: scale(1);}
-  50%{transform: scale(1.4);}
-  100%{transform: scale(1);}
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
+
 .deck .card.match {
-    cursor: default;
-    background: #02ccba;
-    font-size: 33px;
-    animation: pumper 0.3s linear 1;
+  cursor: default;
+  background: #02ccba;
+  font-size: 33px;
+  animation: pumper 0.3s linear 1;
 }
 
 /*
@@ -138,75 +142,82 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
+  text-align: left;
+  width: 345px;
+  margin-bottom: 10px;
 }
 
 .score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
-    list-style: none;
-    display: inline-block;
+.stars li {
+  list-style: none;
+  display: inline-block;
+  opacity: 1;
+  transform: scale(1);
 }
 
-.score-panel
-.restart {
-    float: right;
-    cursor: pointer;
+.stars li.gone {
+  opacity: 0;
+  transform: scale(3);
+  transition: all 0.5s;
+}
+
+.score-panel .restart {
+  float: right;
+  cursor: pointer;
 }
 
 @-webkit-keyframes rotate {
-  100%{
+  100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes rotate {
-  100%{
+  100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-.restart i:hover{
+.restart i:hover {
   -webkit-animation: rotate 0.3s linear infinite;
-          animation: rotate 0.3s linear infinite;
+  animation: rotate 0.3s linear infinite;
 }
 
 /*
  * Styles for pop up dialog
  */
- #pop-up-dialog{
-   display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-    background-color: #ffffff;
-    background-color: rgba(0,0,0,0.4);
-  }
 
-
-.message-wrapper{
-    width: 300px;
-    margin: 0 auto;
-    background: #ffffff;
-    padding: 20px 40px;
-    border-radius: 10px;
+#pop-up-dialog {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.close{
+.message-wrapper {
+  width: 300px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.close {
   float: right;
   font-size: 43px;
   line-height: 43px;
@@ -221,11 +232,11 @@ h1 {
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
-.close:hover{
+.close:hover {
   cursor: pointer;
   -webkit-transform: scale(1.4);
-      -ms-transform: scale(1.4);
-          transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  transform: scale(1.4);
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   -o-transition: transform 0.3s;
@@ -233,12 +244,12 @@ h1 {
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
-#pop-up-message{
+#pop-up-message {
   font-size: 24px;
   text-align: center;
 }
 
-#play-again{
+#play-again {
   display: block;
   margin: 0 auto;
   background: #02ccba;
@@ -251,7 +262,7 @@ h1 {
   outline: none;
 }
 
-#play-again:hover{
+#play-again:hover {
   background: #049689;
   -webkit-transition: background 0.3s;
   -o-transition: background 0.3s;
