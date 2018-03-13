@@ -1,3 +1,10 @@
+@font-face{
+   font-family: 'Digital';
+   src: url('../fonts/digital-7.regular.ttf') format('truetype');
+   src: url('../fonts/digital-7.regular.eot');
+   src: url('../fonts/digital-7.regular.woff') format('woff');
+}
+
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -135,6 +142,15 @@ h1 {
   background: #02ccba;
   font-size: 33px;
   animation: pumper 0.3s linear 1;
+}
+/*
+ * Styles for timer
+ */
+ p.timer {
+    font: bold 42px/42px Digital, sans-serif;
+    color: #bf0000;
+    text-align: center;
+    text-shadow: 0 0 1px #bf0000, 0 0 3px #bf0000
 }
 
 /*
