@@ -47,6 +47,7 @@ body {
 h1 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+  margin: 20px 0 0 0;
 }
 
 /*
@@ -147,7 +148,7 @@ h1 {
  * Styles for timer
  */
  p.timer {
-    font: bold 42px/42px Digital, sans-serif;
+    font: bold 42px/0 Digital, sans-serif;
     color: #bf0000;
     text-align: center;
     text-shadow: 0 0 1px #bf0000, 0 0 3px #bf0000
@@ -187,6 +188,7 @@ h1 {
 .score-panel .restart {
   float: right;
   cursor: pointer;
+  font-size: 24px;
 }
 
 @-webkit-keyframes rotate {
