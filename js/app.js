@@ -153,6 +153,14 @@ closeDialogBtn.addEventListener("click", function() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+/*
+ * @description Increments the move counter and display it on the page,
+ */
+function incrementMoves(){
+  movesCounter += 1;
+  movesDisplay.textContent = movesCounter;
+}
+
 // Clear the openCards array
 function clearOpenCardsList() {
   openCards = [];
@@ -160,7 +168,8 @@ function clearOpenCardsList() {
 
 /*
  * @description Matching cards get "match" class,
- * and match counter is incremented by 1
+ * match counter is incremented by 1,
+ * openCards list is cleared
  */
 function matchedCards() {
   for (var i = 0; i < openCards.length; i++) {
@@ -230,6 +239,7 @@ deck.addEventListener("click", function(e) {
     if (!e.target.classList.contains("open")) {
       displayCardSymbol(e.target);
       storeOpenCards(e.target);
+      incrementMoves();
     }
   }
 });
