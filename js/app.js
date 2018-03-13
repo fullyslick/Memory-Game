@@ -49,8 +49,14 @@ const secondsDisplay = document.querySelector("#seconds");
 // Stores the minutes inside timer
 const minutesDisplay = document.querySelector("#minutes");
 
-// Store the timer JS interval function
+// Stores the timer JS interval function
 let timer;
+
+// Stores the seconds when the timer is paused
+let pauseSeconds;
+
+// Stores the minutes when the timer is paused
+let pauseMinutes;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -157,6 +163,17 @@ function startTimer() {
 function stopTimer() {
   window.clearInterval(timer);
 }
+
+/*
+ *@description Pauses the timer
+ */
+function pauseTimer(){
+  stopTimer();
+  pauseMinutes = minutesDisplay.textContent;
+  pauseSeconds = secondsDisplay.textContent;
+  console.log(pauseMinutes + ":" + pauseSeconds);
+}
+
 /*
  * @description Displays pop up dialog
  */
