@@ -43,6 +43,12 @@ const stars = document.querySelector(".stars").querySelectorAll("li");
 // Stores the number of stars rating
 let numberOfStars = 3;
 
+// Stores the seconds inside the timer
+const secondsDisplay = document.querySelector("#seconds");
+
+// Stores the minutes inside timer
+const minutesDisplay = document.querySelector("#minutes");
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   let currentIndex = array.length,
@@ -204,7 +210,7 @@ function checkGameOver() {
 /*
  * @description Changes star rating depenging on number of moves
  */
-function changeStarRating(){
+function changeStarRating() {
 
   switch (movesCounter) {
     case 18:
@@ -216,11 +222,11 @@ function changeStarRating(){
       stars[1].classList.add("gone");
       numberOfStars = 1;
 
-    break;
+      break;
     case 32:
       stars[0].classList.add("gone");
       numberOfStars = 0;
-    break;
+      break;
   }
 }
 
@@ -230,6 +236,31 @@ function changeStarRating(){
 function incrementMoves() {
   movesCounter += 1;
   movesDisplay.textContent = movesCounter;
+}
+
+/*
+ * @description Start timer
+ */
+function startTimer() {
+  let seconds = 0;
+  let minutes = 0;
+
+  let timer = setInterval(function() {
+    seconds += 1;
+
+    // Output the result in an element with id="demo"
+    if (seconds < 10) {
+      secondsDisplay.textContent = "0" + seconds;
+    } if (seconds >= 10) {
+      secondsDisplay.textContent = seconds;
+    } if (seconds == 60 ) {
+      minutes += 1;
+      seconds = 0;
+      minutesDisplay.textContent = minutes;
+      secondsDisplay.textContent = "00";
+    }
+
+  }, 1000);
 }
 
 // Clear the openCards array
@@ -322,6 +353,11 @@ deck.addEventListener("click", function(e) {
 
       // Increment the move counter
       incrementMoves();
+
+      // If this is the first move of the player start timer
+      if (movesCounter == 1) {
+        startTimer();
+      }
 
       // Change stars rating
       changeStarRating();
