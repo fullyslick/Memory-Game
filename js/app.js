@@ -52,11 +52,17 @@ const minutesDisplay = document.querySelector("#minutes");
 // Stores the timer JS interval function
 let timer;
 
+// Stores the timer seconds
+let timerSeconds = 0;
+
+// Stores the timer minutes
+let timerMinutes = 0;
+
 // Stores the seconds when the timer is paused
-let pauseSeconds;
+let pausedSeconds;
 
 // Stores the minutes when the timer is paused
-let pauseMinutes;
+let pausedMinutes;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -78,11 +84,14 @@ function shuffle(array) {
  * @description - restarts the game,
  * randomises the positions of allCards array of objects,
  * and replaces the "deck" of cards with new one.
- * TO:DO - reset timer
  */
 function newGame() {
   // Game is restared so it is not over
   isGameOver = false;
+
+  // Reset timer
+  timerMinutes = 0;
+  timerSeconds = 0;
 
   // Reset number of moves
   movesCounter = 0;
@@ -132,25 +141,22 @@ window.onload = function() {
  * @description Start timer
  */
 function startTimer() {
-  let seconds = 0;
-  let minutes = 0;
-
   timer = setInterval(function() {
-    seconds += 1;
+    timerSeconds += 1;
 
     /*
      * Display the time on the timer in proper format 0:00
      */
-    if (seconds < 10) {
-      secondsDisplay.textContent = "0" + seconds;
+    if (timerSeconds < 10) {
+      secondsDisplay.textContent = "0" + timerSeconds;
     }
-    if (seconds >= 10) {
-      secondsDisplay.textContent = seconds;
+    if (timerSeconds >= 10) {
+      secondsDisplay.textContent = timerSeconds;
     }
-    if (seconds == 60) {
-      minutes += 1;
-      seconds = 0;
-      minutesDisplay.textContent = minutes;
+    if (timerSeconds == 60) {
+      timerMinutes += 1;
+      timerSeconds = 0;
+      minutesDisplay.textContent = timerMinutes;
       secondsDisplay.textContent = "00";
     }
 
@@ -167,11 +173,25 @@ function stopTimer() {
 /*
  *@description Pauses the timer
  */
-function pauseTimer(){
+function pauseTimer() {
+  
   stopTimer();
-  pauseMinutes = minutesDisplay.textContent;
-  pauseSeconds = secondsDisplay.textContent;
-  console.log(pauseMinutes + ":" + pauseSeconds);
+
+  // Get the current minutes and seconds of timer and store them in paused minutes and seconds
+  pausedMinutes = timerMinutes;
+  pausedSeconds = timerSeconds;
+}
+
+/*
+ * @description Resumes the timer
+ */
+function resumeTimer() {
+
+  // Assign the paused time to timer to know where to continue from
+  timerSeconds = pausedSeconds;
+  timerMinutes = pausedMinutes;
+
+  startTimer();
 }
 
 /*
