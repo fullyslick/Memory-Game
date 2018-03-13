@@ -31,6 +31,7 @@ body {
 .container {
   display: -webkit-box;
   true display: -ms-flexbox;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -63,7 +64,8 @@ h1 {
   padding: 32px;
   border-radius: 10px;
   -webkit-box-pen showshadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+          box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -126,15 +128,33 @@ h1 {
 
 /* Animation of matched cards */
 
-@keyframes pumper {
+@-webkit-keyframes pumper {
   0% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   50% {
-    transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes pumper {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
@@ -142,7 +162,8 @@ h1 {
   cursor: default;
   background: #02ccba;
   font-size: 33px;
-  animation: pumper 0.3s linear 1;
+  -webkit-animation: pumper 0.3s linear 1;
+          animation: pumper 0.3s linear 1;
 }
 /*
  * Styles for timer
@@ -176,13 +197,19 @@ h1 {
   list-style: none;
   display: inline-block;
   opacity: 1;
-  transform: scale(1);
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
   color: #ffb11a;
 }
 
 .stars li.gone {
   opacity: 0;
-  transform: scale(4);
+  -webkit-transform: scale(4);
+      -ms-transform: scale(4);
+          transform: scale(4);
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
   transition: all 0.5s;
 }
 
