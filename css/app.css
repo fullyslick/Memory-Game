@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Digital';
-  src: url('../fonts/digital-7.regular.ttf') format('truetype');
-  src: url('../fonts/digital-7.regular.eot');
-  src: url('../fonts/digital-7.regular.woff') format('woff');
+  src: url(../fonts/digital-7.regular.ttf) format('truetype');
+  src: url(../fonts/digital-7.regular.eot);
+  src: url(../fonts/digital-7.regular.woff) format('woff');
 }
 
 html {
@@ -10,12 +10,17 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -23,7 +28,7 @@ html, body {
 }
 
 body {
-  background: #ffffff url('../img/geometry2.png');
+  background: #fff url(../img/geometry2.png);
   /* Background pattern from Subtle Patterns */
   font-family: 'Coda', cursive;
 }
@@ -95,7 +100,7 @@ h1 {
   width: 125px;
   background: #2e3d49;
   font-size: 0;
-  color: #ffffff;
+  color: #fff;
   border-radius: 8px;
   cursor: pointer;
   display: -webkit-box;
@@ -133,7 +138,7 @@ h1 {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1);
-  }
+  }url
   50% {
     -webkit-transform: scale(1.4);
     transform: scale(1.4);
@@ -158,7 +163,7 @@ h1 {
     transform: scale(1);
   }
 }
-
+url
 .deck .card.match {
   cursor: default;
   background: #02ccba;
@@ -171,9 +176,10 @@ h1 {
  * Styles for timer
  */
 
-p.timer {
-  font: normal 42px/0 Digital, sans-serif;
+.timer {
+  font: normal 42px/42px Digital, sans-serif;
   color: #980101;
+  margin: 0 0 10px 0;
   letter-spacing: 10px;
   text-align: center;
   text-shadow: 0 0 1px #bf0000, 0 0 3px #bf0000
@@ -186,7 +192,7 @@ p.timer {
 .score-panel {
   text-align: left;
   width: 345px;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
 }
 
 .score-panel .stars {
@@ -249,20 +255,20 @@ p.timer {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding: 100px 0 0 0;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  background-color: #ffffff;
+  background-color: #fff;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .message-wrapper {
   width: 500px;
   margin: 0 auto;
-  background: #ffffff;
+  background: #fff;
   padding: 20px 40px;
   border-radius: 10px;
 }
@@ -309,7 +315,7 @@ p.timer {
   display: block;
   margin: 0 auto;
   background: #02ccba;
-  color: #ffffff;
+  color: #fff;
   border: none;
   padding: 10px;
   font-weight: bold;
@@ -328,14 +334,17 @@ p.timer {
 /*
  * Responsive design
  */
+
 @media only screen and (max-width: 660px) {
-  .message-wrapper{
+
+  .message-wrapper {
     max-width: 95%;
   }
 
-  .score-panel{
+  .score-panel {
     padding: 10px;
   }
+
   .deck {
     max-width: 400px;
     min-height: auto;
@@ -354,6 +363,7 @@ p.timer {
 }
 
 @media only screen and (max-width: 400px) {
+  
   .score-panel {
     max-width: 320px;
   }
