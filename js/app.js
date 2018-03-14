@@ -91,6 +91,10 @@ function shuffle(array) {
  */
 function newGame() {
 
+  // Clear openCards array
+  // Fixes the issue of comparing one open card before restart with one open card after restart
+  openCards = [];
+
   // Game is restared so it is not over
   isGameOver = false;
 
