@@ -313,7 +313,7 @@ h1 {
 
 #play-again {
   display: block;
-  margin: 0 auto;
+  margin: 20px auto 0 auto;
   background: #02ccba;
   color: #fff;
   border: none;
@@ -343,6 +343,10 @@ h1 {
 
   .score-panel {
     padding: 10px;
+  }
+
+  .timer{
+    margin: 0 0 20px 0;
   }
 
   .deck {
