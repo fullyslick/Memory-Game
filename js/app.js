@@ -341,13 +341,13 @@ function changeStarRating() {
 
   switch (movesCounter) {
 
-    case 26:
+    case 16:
       stars[2].classList.add('gone');
       numberOfStars = 2;
 
       break;
 
-    case 32:
+    case 24:
       stars[1].classList.add('gone');
       numberOfStars = 1;
 
