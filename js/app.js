@@ -463,10 +463,10 @@ deck.addEventListener('click', function(e) {
       // If there are two objects (cards) in the openCards array compare them
       if (openCards.length == 2) {
         compareOpenCards();
-      }
 
-      // Increment the move counter
-      incrementMoves();
+        // Increment the move counter only when 2 cards are selected
+        incrementMoves();
+      }
 
       // If this is the first move of the player start timer
       if (movesCounter == 1) {
