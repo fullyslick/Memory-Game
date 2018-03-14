@@ -163,7 +163,7 @@ h1 {
     transform: scale(1);
   }
 }
-url
+
 .deck .card.match {
   cursor: default;
   background: #02ccba;
@@ -363,7 +363,7 @@ url
 }
 
 @media only screen and (max-width: 400px) {
-  
+
   .score-panel {
     max-width: 320px;
   }
