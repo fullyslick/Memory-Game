@@ -34,6 +34,9 @@ const movesDisplay = document.querySelector('.moves');
 // Stores the number of moves
 let movesCounter;
 
+// Stores numbers of clicks on card of the user
+let clicksOnCards = 0;
+
 // Stores the number of matched cards pairs
 let matchedCardsPairs;
 
@@ -94,6 +97,9 @@ function newGame() {
   // Clear openCards array
   // Fixes the issue of comparing one open card before restart with one open card after restart
   openCards = [];
+
+  // Its a new game so there are no clicks on cards
+  clicksOnCards = 0;
 
   // Game is restared so it is not over
   isGameOver = false;
@@ -450,6 +456,9 @@ deck.addEventListener('click', function(e) {
   // Delagate the event listener on the child LI
   if (e.target.nodeName === 'LI') {
 
+    // Increment clicks on cards on every card click
+    clicksOnCards += 1;
+
     // This 'if' prevents user from accidently clicking on the same card and marking it as 'match'.
     // Only on this condition provide other operations - displaying, comparing cards, etc.
     if (!e.target.classList.contains('open')) {
@@ -468,9 +477,11 @@ deck.addEventListener('click', function(e) {
         incrementMoves();
       }
 
-      // If this is the first move of the player start timer
-      if (movesCounter == 1) {
+      // If this is the first move/click on card of the player start timer
+      if (clicksOnCards == 1) {
+
         startTimer();
+
       }
 
       // Change stars rating
