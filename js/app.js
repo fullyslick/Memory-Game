@@ -265,7 +265,10 @@ restartBtn.addEventListener("click", function() {
 closeDialogBtn.addEventListener("click", function() {
   hidePopUpDialog();
 
-  resumeTimer();
+  // Fixes starting the timer on click of close button when user have not started the game
+  if (movesCounter !== 0) {
+    resumeTimer();
+  }
 });
 
 /*
