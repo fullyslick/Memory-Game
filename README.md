@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="example.png" alt="Memory Game Project Photo Example" />
+</p>
+
 # Memory Game Project
 This is my **Memory Game** project for the [Udacity Front-End Nanodegree](https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) program.
 
