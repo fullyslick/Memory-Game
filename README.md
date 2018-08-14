@@ -17,6 +17,7 @@ Each turn:
 - The game ends once all cards have been correctly matched.
 
 #### Instructions
+You can check the live version [here](https://fullyslick.github.io/Memory-Game/)
 
 Download or clone the project. Open `index.html` in your favorite browser.
 
